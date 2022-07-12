@@ -1,7 +1,7 @@
 # spring_ci_cd
 
 
-- spring 기반 ci/cd 학습을 위한 리포입니다
+- spring으로 github action 기반 ci/cd 학습을 위한 리포입니다
 
 ### Action Plan
 
