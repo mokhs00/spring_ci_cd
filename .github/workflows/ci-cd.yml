@@ -1,4 +1,4 @@
-name: Java CI with Gradle
+name: Java CI/CD with Gradle
 
 on:
   push:
@@ -47,3 +47,15 @@ jobs:
         --region ap-northeast-2 \
         --acl private \
         ./springboot-ci-cd.zip s3://github-action-deploy-spring/
+
+    - name: Deploy
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      run: |
+        aws deploy create-deployment \
+        --application-name codedeploy-spring-ci-cd \
+        --deployment-group-name codedeploy-spring-ci-cd \
+        --file-exists-behavior OVERWRITE \
+        --s3-location bucket=github-action-deploy-spring,bundleType=zip,key=springboot-ci-cd.zip \
+        --region ap-northeast-2
