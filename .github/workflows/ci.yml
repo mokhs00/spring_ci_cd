@@ -33,7 +33,7 @@ jobs:
       run: mkdir deploy
 
     - name: Copy jar to deploy directory
-      run: cp ./build/libs/*.jar /.deploy/
+      run: cp ./build/libs/*.jar ./deploy/
 
     - name: Zip jar file
       run: zip -r -qq -j ./springboot-ci-cd.zip ./deploy
