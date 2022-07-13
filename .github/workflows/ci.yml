@@ -46,4 +46,4 @@ jobs:
         aws s3 cp \
         --region ap-northeast-2 \
         --acl private \
-        ./springboot-ci-cd.zip s3://springboot-ci-cd/
+        ./springboot-ci-cd.zip s3://github-action-deploy-spring/
