@@ -25,3 +25,25 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
+
+    - name: Build with Gradle
+      run: ./gradlew clean build
+
+    - name: Make deploy directory
+      run: mkdir deploy
+
+    - name: Copy jar to deploy directory
+      run: cp ./builds/libs/*.jar /.deploy/
+
+    - name: Zip jar file
+      run: zip -r -qq -j ./springboot-ci-cd.zip ./deploy
+
+    - name: Deliver to AWS S3
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      run: |
+        aws s3 cp \
+        --region ap-northeast-2 \
+        --acl private \
+        ./springboot-ci-cd.zip s3://springboot-ci-cd/
