@@ -32,6 +32,9 @@ jobs:
     - name: Make deploy directory
       run: mkdir deploy
 
+    - name: Copy appspec to deploy directory
+      run: cp appspec.yml ./deploy/
+
     - name: Copy jar to deploy directory
       run: cp ./build/libs/*.jar ./deploy/
 
