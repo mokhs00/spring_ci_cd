@@ -55,7 +55,7 @@ jobs:
       run: |
         aws deploy create-deployment \
         --application-name codedeploy-spring-ci-cd \
-        --deployment-group-name codedeploy-spring-ci-cd \
+        --deployment-group-name deploy-group-spring-ci-cd \
         --file-exists-behavior OVERWRITE \
         --s3-location bucket=github-action-deploy-spring,bundleType=zip,key=springboot-ci-cd.zip \
         --region ap-northeast-2
