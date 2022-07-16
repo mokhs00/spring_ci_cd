@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# profile.sh
+# 미사용 중인 profile 조회
+
 function find_idle_profile()
 {
   RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost/profile)
@@ -21,7 +24,7 @@ function find_idle_profile()
   echo "${IDEL_PROFILE}"
 }
 
-
+# find port of idle profile
 function find_idle_port()
 {
   IDLE_PROFILE=$(find_idle_profile)
