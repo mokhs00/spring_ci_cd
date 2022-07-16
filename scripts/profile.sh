@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # profile.sh
-# 미사용 중인 profile 조회
+# find idle profile
 
 function find_idle_profile()
 {

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# stop.sh
+# scripts to kill server process
+
 ABSPATH=$(readlink -f $0)
 ABSDIR=$(dirname $ABSPATH)
 
